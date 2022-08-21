@@ -1,7 +1,6 @@
 ﻿namespace OctopusDeploy.Deploy.Logging
 {
-    public class Logging
+    public interface ILogger
     {
-
     }
 }
