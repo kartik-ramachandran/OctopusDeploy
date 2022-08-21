@@ -15,7 +15,7 @@ namespace OctopusDeploy.Deploy.Data.Implementation
         }
 
         public void GetEnvironmentsData()
-        {
+        { 
             throw new NotImplementedException();
         }
 

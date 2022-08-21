@@ -1,4 +1,4 @@
-﻿using OctopusDeploy.Deploy.Business.Domain;
+﻿using OctopusDeploy.Deploy.Domain;
 
 namespace OctopusDeploy.Deploy.Business.Interfaces
 {
