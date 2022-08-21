@@ -1,4 +1,4 @@
-﻿namespace OctopusDeploy.Deploy.Json.Domain
+﻿namespace OctopusDeploy.Deploy.Domain
 {
     public class Environments
     {
