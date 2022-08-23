@@ -1,37 +1,67 @@
 ﻿using OctopusDeploy.Deploy.Data.Interface;
+using OctopusDeploy.Deploy.Domain;
+using OctopusDeploy.Deploy.Json;
 
 namespace OctopusDeploy.Deploy.Data.Implementation
 {
     public class Read : IRead
     {
-        public void GetDeploymentsData()
+        private readonly IJsonAction _jsonAction;
+        public string? DeploymentFilePath { get; set; }
+        public string? ReleaseFilePath { get; set; }
+        public string? ProjectFilePath { get; set; }
+        public string? EnvironmentFilePath { get; set; }
+
+        public Read(IJsonAction jsonAction)
         {
-            throw new NotImplementedException();
+            _jsonAction = jsonAction;
         }
 
-        public void GetDeploymentsForEnvironment(string environmentId)
+        public List<Deployments> GetDeploymentsData()
         {
-            throw new NotImplementedException();
+            return _jsonAction.Read<Deployments>(DeploymentFilePath);
         }
 
-        public void GetEnvironmentsData()
-        { 
-            throw new NotImplementedException();
+        public List<Deployments> GetDeploymentsForEnvironment(string environmentId)
+        {
+            var deployments = GetDeploymentsData();
+
+            var filteredDeployments = deployments.FindAll(d => d.EnvironmentId.Equals(environmentId));
+
+            return filteredDeployments;
         }
 
-        public void GetProjectsData()
+        public List<Deployments> GetDeploymentsForReleases(List<string> releaseIds)
         {
-            throw new NotImplementedException();
+            var deployments = GetDeploymentsData();
+
+            var filteredDeployments = deployments.FindAll(d => releaseIds.Contains(d.ReleaseId));
+
+            return filteredDeployments;
         }
 
-        public void GetReleasesData()
+        public List<Environments> GetEnvironmentsData()
         {
-            throw new NotImplementedException();
+            return _jsonAction.Read<Environments>(EnvironmentFilePath);
         }
 
-        public void GetReleasesForProject(string projectId)
+        public List<Projects> GetProjectsData()
         {
-            throw new NotImplementedException();
+            return _jsonAction.Read<Projects>(ProjectFilePath);
+        }
+
+        public List<Releases> GetReleasesData()
+        {
+            return _jsonAction.Read<Releases>(ReleaseFilePath);
+        }
+
+        public List<Releases> GetReleasesForProject(string projectId)
+        {
+            var releases = GetReleasesData();
+
+            var filteredReleases = releases.FindAll(d => d.ProjectId.Equals(projectId));
+
+            return filteredReleases;
         }
     }
 }

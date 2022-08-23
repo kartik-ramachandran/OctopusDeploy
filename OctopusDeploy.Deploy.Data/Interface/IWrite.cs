@@ -1,18 +1,18 @@
-﻿namespace OctopusDeploy.Deploy.Data.Interface
+﻿using OctopusDeploy.Deploy.Domain;
+
+namespace OctopusDeploy.Deploy.Data.Interface
 {
     public interface IWrite
     {
-        void AddDeployments();
-        void AddProjects();
-        void AddReleases();
-        void AddEnvironments();
-        void RemoveEnvironments();
-        void RemoveProjects();
-        void RemoveReleases();
-        void RemoveDeployments();
-        void UpdateProjectData();
-        void UpdateEnvironmentData();
-        void UpdateReleaseData();
-        void UpdateDeploymentData();
+        string? DeploymentFilePath { get; set; }
+        string? EnvironmentFilePath { get; set; }
+        string? ProjectFilePath { get; set; }
+        string? ReleaseFilePath { get; set; }
+
+        void WriteDeployments(List<Deployments> deployments);
+        void WriteEnvironments(List<Environments> environments);
+        void WriteProjects(List<Projects> projects);
+        void WriteReleases(List<Releases> releases);
+       
     }
 }

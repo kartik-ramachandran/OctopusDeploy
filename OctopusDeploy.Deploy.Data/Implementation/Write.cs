@@ -1,67 +1,40 @@
 ﻿using OctopusDeploy.Deploy.Data.Interface;
+using OctopusDeploy.Deploy.Domain;
+using OctopusDeploy.Deploy.Json;
 
 namespace OctopusDeploy.Deploy.Data.Implementation
 {
     public class Write : IWrite
     {
-        public void AddDeployments()
+        private readonly IJsonAction _jsonAction;
+        public string? DeploymentFilePath { get; set; }
+        public string? ReleaseFilePath { get; set; }
+        public string? ProjectFilePath { get; set; }
+        public string? EnvironmentFilePath { get; set; }
+
+        public Write(IJsonAction jsonAction)
         {
-            throw new NotImplementedException();
+            _jsonAction = jsonAction;
         }
 
-        public void AddEnvironments()
+        public void WriteDeployments(List<Deployments> deployments)
         {
-            throw new NotImplementedException();
+            _jsonAction.Write<Deployments>(deployments, DeploymentFilePath);
         }
 
-        public void AddProjects()
+        public void WriteEnvironments(List<Environments> environments)
         {
-            throw new NotImplementedException();
+            _jsonAction.Write<Environments>(environments, EnvironmentFilePath);
         }
 
-        public void AddReleases()
+        public void WriteProjects(List<Projects> projects)
         {
-            throw new NotImplementedException();
+            _jsonAction.Write<Projects>(projects, ProjectFilePath);
         }
 
-        public void RemoveDeployments()
+        public void WriteReleases(List<Releases> releases)
         {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveEnvironments()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveProjects()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveReleases()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateDeploymentData()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateEnvironmentData()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateProjectData()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateReleaseData()
-        {
-            throw new NotImplementedException();
-        }
+            _jsonAction.Write<Releases>(releases, ReleaseFilePath);
+        }        
     }
 }

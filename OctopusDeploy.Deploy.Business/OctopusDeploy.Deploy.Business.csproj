@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OctopusDeploy.Deploy.Data\OctopusDeploy.Deploy.Data.csproj" />
     <ProjectReference Include="..\OctopusDeploy.Deploy.Domain\OctopusDeploy.Deploy.Domain.csproj" />
     <ProjectReference Include="..\OctopusDeploy.Deploy.Json\OctopusDeploy.Deploy.Json.csproj" />
+    <ProjectReference Include="..\OctopusDeploy.Deploy.Logging\OctopusDeploy.Deploy.Logging.csproj" />
   </ItemGroup>
 
 </Project>

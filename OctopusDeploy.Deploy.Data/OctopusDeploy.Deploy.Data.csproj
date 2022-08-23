@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OctopusDeploy.Deploy.Domain\OctopusDeploy.Deploy.Domain.csproj" />
+    <ProjectReference Include="..\OctopusDeploy.Deploy.Json\OctopusDeploy.Deploy.Json.csproj" />
+  </ItemGroup>
+
 </Project>
