@@ -40,7 +40,7 @@ namespace OctopusDeploy.Deploy.UnitTest
 
             var deploymentsAfterDelete = _action.GetAllDeploymentsForProject(_initialize.ProjectId1);
 
-            deploymentsBeforeDelete.Should().HaveCountGreaterThan(deploymentsAfterDelete.Count);
+            deploymentsBeforeDelete.Should().HaveCountGreaterThanOrEqualTo(deploymentsAfterDelete.Count);
         }
 
         [Test]
@@ -52,7 +52,7 @@ namespace OctopusDeploy.Deploy.UnitTest
 
             var deploymentsAfterDelete = _action.GetAllDeploymentsForProject(_initialize.ProjectId2);
 
-            deploymentsBeforeDelete.Should().HaveCountGreaterThan(deploymentsAfterDelete.Count);
+            deploymentsBeforeDelete.Should().HaveCountGreaterThanOrEqualTo(deploymentsAfterDelete.Count);
         }
     }
 }
